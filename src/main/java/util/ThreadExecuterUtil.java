@@ -1,6 +1,8 @@
 package util;
 
 import enumeration.OperationType;
+import lombok.experimental.UtilityClass;
+import org.springframework.stereotype.Component;
 import pojo.BankAccount;
 
 import java.math.BigDecimal;
@@ -10,6 +12,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
+@UtilityClass
 public class ThreadExecuterUtil {
     public static Map<Integer, BankAccount> getBankAccountMap() {
         BigDecimal balance = BigDecimal.valueOf(100);
