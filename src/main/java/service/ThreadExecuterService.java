@@ -32,7 +32,7 @@ public class ThreadExecuterService {
                 public Object call() throws Exception {
                     Integer removableEntryKey = null;
                     while (bankAccountEntry.getValue().getBalance().compareTo(BigDecimal.ZERO) > 0) {
-                        OperationType operationType = operationList.get(ThreadExecuterUtil.generateRandomIntValue(2));
+                        OperationType operationType = operationList.get(ThreadExecuterUtil.getLimitedRandomIntValue(2));
 
                         if (OperationType.TRANSFER.equals(operationType)) {
                             BankAccount randomSelectedPairAcount = bankAccountMap
@@ -44,7 +44,7 @@ public class ThreadExecuterService {
                         }
                         removableEntryKey = bankAccountEntry.getKey();
                         try {
-                            Thread.sleep(ThreadExecuterUtil.generateRandomIntValue(10000));
+                            Thread.sleep(ThreadExecuterUtil.getLimitedRandomIntValue(10000));
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
@@ -117,7 +117,7 @@ public class ThreadExecuterService {
 
             if (bankAccount.getBalance().compareTo(balance) >= 0) {
                 bankAccount.setBalance(bankAccount.getBalance().subtract(balance));
-            } else {
+            } else {  //if there is not enough balance withdrawal all
                 bankAccount.setBalance(BigDecimal.ZERO);
             }
         }

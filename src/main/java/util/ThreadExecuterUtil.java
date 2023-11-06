@@ -29,19 +29,19 @@ public class ThreadExecuterUtil {
     }
 
     public static BigDecimal generateRandomBalance() {
-        int number = generateRandomIntValue(10) * 10;
+        int number = getLimitedRandomIntValue(10) * 10;
         return BigDecimal.valueOf(number);
     }
 
-    public static int generateRandomIntValue(int limit) {
+    public static int getLimitedRandomIntValue(int limit) {
         Random r = new Random();
         return r.nextInt(limit);
     }
 
     public static int generateRandomIntValueExceptGivenValue(int limit, int givenValue) {
-        int randomValue = generateRandomIntValue(limit);
+        int randomValue = getLimitedRandomIntValue(limit);
         while (randomValue == givenValue) {
-            randomValue = generateRandomIntValue(limit);
+            randomValue = getLimitedRandomIntValue(limit);
         }
         return randomValue;
     }
